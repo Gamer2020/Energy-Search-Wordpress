@@ -10,10 +10,10 @@ License:      GPL2
 License URI:  https://www.gnu.org/licenses/gpl-2.0.html
 */
 ?>
-
 <?php
 	
-//use pokemon-tcg-sdk-php\Pokemon;
+use Pokemon\Pokemon;
+require __DIR__ . '/vendor/autoload.php';
 
 /** Hooks go here*/
 /** Hook for options page.*/
@@ -32,16 +32,22 @@ function es_plugin_options() {
 	if ( !current_user_can( 'administrator' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
-	screen_icon();
 	echo '<div class="wrap">';
 	echo '<p>Here is where the form would go if I actually had options.</p>';
 	echo '</div>';
 }
 ?>
-
 <?php
 function es_database_page(){
-Echo 'DataBase Page here';
+
+$options = ['verify' => true];
+
+$response = Pokemon::Set($options)->all();
+foreach ($response as $model) {
+    $SetInfo = $model->toArray();
+	echo 'test ' . $SetInfo[0];
+    //print_r($model->toJson());
 }
 
+}
 ?>

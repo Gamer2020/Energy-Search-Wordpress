@@ -1,0 +1,10 @@
+{
+    "name": "gamer2020/energy-search",
+    "description": "A Pokemon TCG plugin for Wordpress made with the Pokemon TCG API!",
+    "type": "project",
+    "require": {
+        "pokemon-tcg/pokemon-tcg-sdk-php": "^1.2",
+        "doctrine/inflector": "1.1.0"
+    },
+    "license": "GPLV2"
+}
