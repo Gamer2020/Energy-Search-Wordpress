@@ -73,11 +73,11 @@
 					
 					} elseif (count($card['types']) == 1){
 					
-					echo $card['types'][0];
+					echo TypeToImageHTML($card['types'][0]) . " " . $card['types'][0];
 					
 					} elseif (count($card['types']) == 2){
 					
-					echo $card['types'][0] . "/" . $card['types'][1];
+					echo TypeToImageHTML($card['types'][0]) . " " . $card['types'][0] . " / " . TypeToImageHTML($card['types'][1]) . " " . $card['types'][1];
 					
 				}
 				
@@ -119,8 +119,8 @@
 				echo '</td><td>';
 				//print_r ($card['weaknesses']);
 				for ($x = 0; $x < count($card['weaknesses']); $x++) {
-					echo $card['weaknesses'][$x]['type'];
-					echo $card['weaknesses'][$x]['value'];
+					echo TypeToImageHTML($card['weaknesses'][$x]['type']);
+					echo " " . $card['weaknesses'][$x]['value'];
 					echo '<br>';
 				} 
 				
@@ -138,8 +138,8 @@
 				echo '</td><td>';
 				
 				for ($x = 0; $x < count($card['resistances']); $x++) {
-					echo $card['resistances'][$x]['type'];
-					echo $card['resistances'][$x]['value'];
+					echo TypeToImageHTML($card['resistances'][$x]['type']);
+					echo " " . $card['resistances'][$x]['value'];
 					echo '<br>';
 				} 
 				
@@ -156,8 +156,7 @@
 				echo '</td><td>';
 				
 				for ($x = 0; $x < count($card['retreatCost']); $x++) {
-					echo $card['retreatCost'][$x];
-					echo '<br>';
+					echo TypeToImageHTML($card['retreatCost'][$x]);
 				} 
 				
 				echo '</td></tr>';
@@ -183,6 +182,9 @@
 				echo '<td> <b>Text:</b>';
 				
 				echo '</td><td>';
+				
+				echo '<br>';
+				
 				//print_r ($card['ability']);
 				
 				if ($card['ability']['text'] <> ""){
@@ -192,14 +194,20 @@
 				}
 				
 				for ($x = 0; $x < count($card['attacks']); $x++) {
-					echo $card['attacks'][$x]['name'] . " | " . $card['attacks'][$x]['damage']  . "<br>";
+					
+					for ($y = 0; $y < count($card['attacks'][$x]['cost']); $y++) {
+						echo TypeToImageHTML($card['attacks'][$x]['cost'][$y]);
+					} 
+					
+					echo " " . $card['attacks'][$x]['name'] . " | " . $card['attacks'][$x]['damage']  . "<br>";
 					echo $card['attacks'][$x]['text'];
 					echo '<br>' . '<br>';
 				} 
 				//print_r ($card['text']);
-				echo $card['text'][0];
-				echo '<br>' . '<br>';
-				
+				if ($card['text']){
+					echo $card['text'][0];
+					echo '<br>' . '<br>';
+				}
 				echo '</td></tr>';
 				
 				echo '</tbody></table>';

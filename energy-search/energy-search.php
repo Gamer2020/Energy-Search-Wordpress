@@ -16,6 +16,7 @@
 	require __DIR__ . '/vendor/autoload.php';
 	
 	require 'card.php';
+	require 'poketcgfunctions.php';
 	
 	/** Hooks go here*/
 	/** Hook for options page.*/
