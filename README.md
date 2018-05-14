@@ -10,7 +10,9 @@ Shotcodes
 ========
 
 [es_search_page] - Code for the search results page.
+
 [es_card_page] - Code for the page for individual cards.
+
 [es_sets_page] - Code for the page that displays all the sets.
 
 Credits
