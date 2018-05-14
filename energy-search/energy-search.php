@@ -38,7 +38,7 @@
 	
 	function es_options_init(){
 		register_setting('es_options_group','es_cardpage_options','es_options_validate');
-		register_setting('es_options_group','es_search_options','es_options_validate');
+		register_setting('es_options_group','es_searchpage_options','es_options_validate');
 	}
 	
 	function es_options_validate( $input ) {
