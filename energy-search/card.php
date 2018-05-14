@@ -212,10 +212,8 @@
 				
 				echo '</tbody></table>';
 				
-			}
-			
-			//catch exception
-			catch(Exception $e) {
+				//catch exception
+				}catch(Exception $e) {
 				echo 'Message: ' .$e->getMessage();
 			}
 			
