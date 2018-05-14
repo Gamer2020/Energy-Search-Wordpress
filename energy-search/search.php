@@ -11,8 +11,9 @@
 				$response = Pokemon::Card($options)->where([
 				'name' => (isset($_GET['cardname']) ? $_GET['cardname'] : ''),
 				'setCode' => (isset($_GET['setcode']) ? $_GET['setcode'] : ''),
-				'pageSize' => 100
+				'pageSize' => 500
 				])->all();
+				
 				foreach ($response as $model) {
 					$card = $model->toArray();
 					//echo $card['name'] . "<br>";
