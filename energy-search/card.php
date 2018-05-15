@@ -7,7 +7,7 @@
 			
 			try {
 				$options = ['verify' => true];
-				$response = Pokemon::Card($options)->find($_GET['ID']);
+				$response = Pokemon::Card($options)->find(sanitize_text_field($_GET['ID']));
 				$card = $response->toArray();
 				//print_r($response->toArray());
 				

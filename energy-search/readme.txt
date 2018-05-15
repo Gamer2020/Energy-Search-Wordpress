@@ -1,6 +1,6 @@
 === Energy Search ===
 Contributors: Gamer2020
-Donate link: http://example.com/
+Donate link: https://gamer2020.net/?page_id=335
 Tags: Pokemon, TCG, Gamer2020
 Requires at least: 4.9
 Tested up to: 4.9

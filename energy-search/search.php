@@ -9,8 +9,8 @@
 				$es_cardpage_options = get_option( 'es_cardpage_options' );
 				
 				$response = Pokemon::Card($options)->where([
-				'name' => (isset($_GET['cardname']) ? $_GET['cardname'] : ''),
-				'setCode' => (isset($_GET['setcode']) ? $_GET['setcode'] : ''),
+				'name' => (isset($_GET['cardname']) ? sanitize_text_field($_GET['cardname']) : ''),
+				'setCode' => (isset($_GET['setcode']) ? sanitize_text_field($_GET['setcode']) : ''),
 				'pageSize' => 500
 				])->all();
 				
