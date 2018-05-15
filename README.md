@@ -1,4 +1,4 @@
-# Energy-Search
+# Energy Search
 A Pokemon TCG plugin for Wordpress made with the Pokemon TCG API host on https://pokemontcg.io/
 
 Using this plugin you can add a card database to your website. Many for features to be added in the future!
