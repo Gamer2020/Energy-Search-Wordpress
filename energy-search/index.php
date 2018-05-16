@@ -1,6 +1,2 @@
-<?php
-
-echo "Viewing this folder is forbidden!";
-
-
+<?phpecho "Viewing this folder is forbidden!";
 ?>
