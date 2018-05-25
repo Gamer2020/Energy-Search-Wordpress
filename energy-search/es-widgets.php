@@ -36,10 +36,10 @@
 			
 			// This is where you run the code and display the output
 			//echo __( 'Hello, World!', 'wpb_widget_domain' );
-			
+			$es_searchpage_options = get_option( 'es_searchpage_options' );
 		?>
 		<!-- The form -->
-		<form action="search/">
+		<form action="<?php echo get_permalink($es_searchpage_options['page_id']) ;?>">
 			<input type="text" placeholder="Search..." name="cardname">
 			<button type="submit" name="search" value="search"><i class="fa fa-search"></i></button>
 		</form>
