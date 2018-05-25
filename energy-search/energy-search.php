@@ -20,6 +20,7 @@
 	require 'card.php';
 	require 'search.php';
 	require 'sets.php';
+	require 'es-widgets.php';
 	
 	/** Hooks go here*/
 	/** Hook for options page.*/
@@ -45,4 +46,5 @@
 		// do some validation here if necessary
 		return $input;
 	}
+	
 ?>
