@@ -40,7 +40,7 @@
 		?>
 		<!-- The form -->
 		<form action="search/">
-			<input type="text" placeholder="Search..." name="name">
+			<input type="text" placeholder="Search..." name="cardname">
 			<button type="submit" name="search" value="search"><i class="fa fa-search"></i></button>
 		</form>
 		<?php			
