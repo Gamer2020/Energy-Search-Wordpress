@@ -51,6 +51,42 @@
 			echo '</select>';
 		?>
 		
+				<?php
+			echo 'Weakness: <select name="weakness">';
+			
+			echo '<option'; ?> <?php if(isset($_GET['weakness'])){if(sanitize_text_field($_GET['weakness']) == "All"){ echo "selected"; }}Else{echo "selected";}?> <?php echo 'value="All">All</option>';
+			
+			foreach ($types as $type) {
+				
+				echo '<option ' . 
+				((isset($_GET['weakness'])) ? 
+				((sanitize_text_field($_GET['weakness']) ==  $type) ? 'selected' : '')
+				:'')
+				. ' value="' . $type . '">' . $type . '</option>';
+				
+			}
+			
+			echo '</select>';
+		?>
+		
+				<?php
+			echo 'Resistance: <select name="resistance">';
+			
+			echo '<option'; ?> <?php if(isset($_GET['resistance'])){if(sanitize_text_field($_GET['resistance']) == "All"){ echo "selected"; }}Else{echo "selected";}?> <?php echo 'value="All">All</option>';
+			
+			foreach ($types as $type) {
+				
+				echo '<option ' . 
+				((isset($_GET['resistance'])) ? 
+				((sanitize_text_field($_GET['resistance']) ==  $type) ? 'selected' : '')
+				:'')
+				. ' value="' . $type . '">' . $type . '</option>';
+				
+			}
+			
+			echo '</select>';
+		?>
+		
 		<button type="submit" name="search" value="search"><i class="fa fa-search"></i></button>
 	</form><br>
 	<?php		

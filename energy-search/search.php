@@ -12,6 +12,8 @@
 				'name' => (isset($_GET['cardname']) ? sanitize_text_field($_GET['cardname']) : ''),
 				'setCode' => (isset($_GET['setcode']) ? ((sanitize_text_field($_GET['setcode']) == 'All') ? '' : sanitize_text_field($_GET['setcode'])) : ''),
 				'types' => (isset($_GET['type']) ? ((sanitize_text_field($_GET['type']) == 'All') ? '' : sanitize_text_field($_GET['type'])) : ''),
+				'weaknesses' => (isset($_GET['weakness']) ? ((sanitize_text_field($_GET['weakness']) == 'All') ? '' : sanitize_text_field($_GET['weakness'])) : ''),
+				'resistances' => (isset($_GET['resistance']) ? ((sanitize_text_field($_GET['resistance']) == 'All') ? '' : sanitize_text_field($_GET['resistance'])) : ''),
 				//'attackText' => (isset($_GET['cardtext']) ? sanitize_text_field($_GET['cardtext']) : ''),
 				//'attackName' => (isset($_GET['cardtext']) ? sanitize_text_field($_GET['cardtext']) : ''),
 				//'abilityName' => (isset($_GET['cardtext']) ? sanitize_text_field($_GET['cardtext']) : ''),
