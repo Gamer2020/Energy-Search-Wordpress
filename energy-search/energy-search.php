@@ -21,6 +21,7 @@
 	require 'search.php';
 	require 'sets.php';
 	require 'es-widgets.php';
+	require 'searchbox.php';
 	
 	/** Hooks go here*/
 	/** Hook for options page.*/
@@ -31,6 +32,7 @@
 	add_shortcode('es_search_page', 'es_search_page');
 	add_shortcode('es_card_page', 'es_card_page');
 	add_shortcode('es_sets_page', 'es_sets_page');
+	add_shortcode('es_search_box', 'es_search_box');
 	
 	/** Link for options page.*/
 	function es_plugin_menu() {
