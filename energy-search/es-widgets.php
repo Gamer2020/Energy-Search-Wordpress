@@ -17,7 +17,7 @@
 			'es_search_widget', 
 			
 			// Widget name will appear in UI
-			__('Card Search Widget', 'wpb_widget_domain'), 
+			__('Energy Search - Card Search', 'wpb_widget_domain'), 
 			
 			// Widget description
 			array( 'description' => __( 'This widget contains a search box for searching cards. This only searchs by card name.', 'wpb_widget_domain' ), ) 
