@@ -41,7 +41,7 @@
 		foreach ($standardresponse as $model) {
 			$set = $model->toArray();
 			
-			echo '<a href=' . get_permalink($es_searchpage_options['page_id']) . '?search=search&setcode=' . $set['code'] . '>' . $set['name'] . '</a><br>';
+			echo '<a href=' . get_permalink($es_searchpage_options['page_id']) . '?search=search&setcode=' . $set['code'] . '>' . '<img width="30" height="30" src=' . $set['symbolUrl'] . '>' . $set['name'] . '</a><br>';
 			
 		}
 		
@@ -54,7 +54,7 @@
 		foreach ($expandedresponse as $model) {
 			$set = $model->toArray();
 			
-			echo '<a href=' . get_permalink($es_searchpage_options['page_id']) . '?search=search&setcode=' . $set['code'] . '>' . $set['name'] . '</a><br>';
+			echo '<a href=' . get_permalink($es_searchpage_options['page_id']) . '?search=search&setcode=' . $set['code'] . '>' . '<img width="30" height="30" src=' . $set['symbolUrl'] . '>' . $set['name'] . '</a><br>';
 			
 		}
 		echo '</span>';
@@ -66,7 +66,7 @@
 		foreach ($unlimitedresponse as $model) {
 			$set = $model->toArray();
 			
-			echo '<a href=' . get_permalink($es_searchpage_options['page_id']) . '?search=search&setcode=' . $set['code'] . '>' . $set['name'] . '</a><br>';
+			echo '<a href=' . get_permalink($es_searchpage_options['page_id']) . '?search=search&setcode=' . $set['code'] . '>' . '<img width="30" height="30" src=' . $set['symbolUrl'] . '>' . $set['name'] . '</a><br>';
 			
 		}
 		
