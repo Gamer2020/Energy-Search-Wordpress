@@ -51,7 +51,7 @@
 			echo '</select>';
 		?>
 		
-				<?php
+		<?php
 			echo 'Weakness: <select name="weakness">';
 			
 			echo '<option'; ?> <?php if(isset($_GET['weakness'])){if(sanitize_text_field($_GET['weakness']) == "All"){ echo "selected"; }}Else{echo "selected";}?> <?php echo 'value="All">All</option>';
@@ -69,7 +69,7 @@
 			echo '</select>';
 		?>
 		
-				<?php
+		<?php
 			echo 'Resistance: <select name="resistance">';
 			
 			echo '<option'; ?> <?php if(isset($_GET['resistance'])){if(sanitize_text_field($_GET['resistance']) == "All"){ echo "selected"; }}Else{echo "selected";}?> <?php echo 'value="All">All</option>';
@@ -81,6 +81,46 @@
 				((sanitize_text_field($_GET['resistance']) ==  $type) ? 'selected' : '')
 				:'')
 				. ' value="' . $type . '">' . $type . '</option>';
+				
+			}
+			
+			echo '</select>';
+		?>
+		
+		<?php
+			$supertypes = Pokemon::Supertype()->all();
+			
+			echo 'Category: <select name="cat">';
+			
+			echo '<option'; ?> <?php if(isset($_GET['cat'])){if(sanitize_text_field($_GET['cat']) == "All"){ echo "selected"; }}Else{echo "selected";}?> <?php echo 'value="All">All</option>';
+			
+			foreach ($supertypes as $supertype) {
+				
+				echo '<option ' . 
+				((isset($_GET['cat'])) ? 
+				((sanitize_text_field($_GET['cat']) ==  $supertype) ? 'selected' : '')
+				:'')
+				. ' value="' . $supertype . '">' . $supertype . '</option>';
+				
+			}
+			
+			echo '</select>';
+		?>
+		
+		<?php
+			$subtypes = Pokemon::Subtype()->all();
+			
+			echo 'Sub Category: <select name="subcat">';
+			
+			echo '<option'; ?> <?php if(isset($_GET['subcat'])){if(sanitize_text_field($_GET['subcat']) == "All"){ echo "selected"; }}Else{echo "selected";}?> <?php echo 'value="All">All</option>';
+			
+			foreach ($subtypes as $subtype) {
+				
+				echo '<option ' . 
+				((isset($_GET['subcat'])) ? 
+				((sanitize_text_field($_GET['subcat']) ==  $subtype) ? 'selected' : '')
+				:'')
+				. ' value="' . $subtype . '">' . $subtype . '</option>';
 				
 			}
 			

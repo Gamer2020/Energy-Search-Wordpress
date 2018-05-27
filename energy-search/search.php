@@ -14,6 +14,8 @@
 				'types' => (isset($_GET['type']) ? ((sanitize_text_field($_GET['type']) == 'All') ? '' : sanitize_text_field($_GET['type'])) : ''),
 				'weaknesses' => (isset($_GET['weakness']) ? ((sanitize_text_field($_GET['weakness']) == 'All') ? '' : sanitize_text_field($_GET['weakness'])) : ''),
 				'resistances' => (isset($_GET['resistance']) ? ((sanitize_text_field($_GET['resistance']) == 'All') ? '' : sanitize_text_field($_GET['resistance'])) : ''),
+				'supertype' => (isset($_GET['cat']) ? ((sanitize_text_field($_GET['cat']) == 'All') ? '' : sanitize_text_field($_GET['cat'])) : ''),
+				'subtype' => (isset($_GET['subcat']) ? ((sanitize_text_field($_GET['subcat']) == 'All') ? '' : sanitize_text_field($_GET['subcat'])) : ''),
 				//'attackText' => (isset($_GET['cardtext']) ? sanitize_text_field($_GET['cardtext']) : ''),
 				//'attackName' => (isset($_GET['cardtext']) ? sanitize_text_field($_GET['cardtext']) : ''),
 				//'abilityName' => (isset($_GET['cardtext']) ? sanitize_text_field($_GET['cardtext']) : ''),
@@ -35,6 +37,6 @@
 			
 			echo "Search not initiated!";
 			
-			}
-			}
+		}
+	}
 ?>
