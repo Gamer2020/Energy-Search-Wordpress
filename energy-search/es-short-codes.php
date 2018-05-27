@@ -8,8 +8,8 @@
 			$response = Pokemon::Card($options)->find(sanitize_text_field($content));
 			$card = $response->toArray();
 			
-			echo "<a href='" . get_permalink($es_cardpage_options['page_id']) . "?ID=" . $card['id'] . "'>" . '<img width="250" height="350" src=' . $card['imageUrl'] . "" . " alt=" . '"' . $card['name'] . '"' . ">" . "</a>";
-			
+			return "<a href='" . get_permalink($es_cardpage_options['page_id']) . "?ID=" . $card['id'] . "'>" . '<img width="250" height="350" src=' . $card['imageUrl'] . "" . " alt=" . '"' . $card['name'] . '"' . ">" . "</a>";
+
 		}	
 	}
 	
@@ -20,8 +20,8 @@
 			$response = Pokemon::Card($options)->find(sanitize_text_field($content));
 			$card = $response->toArray();
 			
-			echo "<a href='" . get_permalink($es_cardpage_options['page_id']) . "?ID=" . $card['id'] . "'>" . $card['name'] . "</a>";
-			
+			return "<a href='" . get_permalink($es_cardpage_options['page_id']) . "?ID=" . $card['id'] . "'>" . $card['name'] . "</a>";
+
 		}
 	}
 	
