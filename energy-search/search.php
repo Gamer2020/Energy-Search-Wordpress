@@ -25,7 +25,7 @@
 				
 				foreach ($response as $model) {
 					$card = $model->toArray();
-					echo "<a href='" . get_permalink($es_cardpage_options['page_id']) . "?ID=" . $card['id'] . "'>" . '<img width="250" height="350" src=' . $card['imageUrlHiRes'] . "" . " alt=" . '"' . $card['name'] . '"' . ">" . "</a>";
+					echo "<a href='" . get_permalink($es_cardpage_options['page_id']) . "?ID=" . $card['id'] . "'>" . '<img width="250" height="350" src=' . $card['imageUrl'] . "" . " alt=" . '"' . $card['name'] . '"' . ">" . "</a>";
 				}	
 				
 				//catch exception

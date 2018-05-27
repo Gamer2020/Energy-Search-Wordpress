@@ -29,7 +29,7 @@
 				
 				echo '<tr>';
 				
-				echo '<td rowspan="90"><a href="' . $card['imageUrlHiRes'] . '">' . '<img width="250" height="350" src=' . $card['imageUrlHiRes'] . " alt=" . '"' . $card['name'] . '"' . ">" . "</a>";
+				echo '<td rowspan="90"><a href="' . $card['imageUrl'] . '">' . '<img width="250" height="350" src=' . $card['imageUrl'] . " alt=" . '"' . $card['name'] . '"' . ">" . "</a>";
 				
 				echo '</td></tr>';
 				
