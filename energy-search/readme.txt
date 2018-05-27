@@ -13,13 +13,13 @@ A Pokemon TCG plugin for Wordpress!
 
 == Description ==
 
-A Pokemon TCG plugin for Wordpress made with the Pokemon TCG API host on https://pokemontcg.io/
+A Pokemon TCG plugin for Wordpress made with the Pokemon TCG API host on [https://pokemontcg.io/](https://pokemontcg.io/)
 
 Using this plugin you can add a card database to your website. Many more features to be added in the future!
 
 == Demo ==
 
-https://www.energysearch.gamer2020.net/
+[https://www.energysearch.gamer2020.net/](https://www.energysearch.gamer2020.net/)
 
 == Installation ==
 
@@ -48,7 +48,7 @@ All data is fetched from https://pokemontcg.io/
 
 = Where can I get support for this plugin? =
 
-https://github.com/Gamer2020/Energy-Search/issues
+[https://github.com/Gamer2020/Energy-Search/issues](https://github.com/Gamer2020/Energy-Search/issues)
 
 = Something isn't working right on the demo site? =
 
