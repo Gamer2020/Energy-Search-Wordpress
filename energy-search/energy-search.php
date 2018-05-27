@@ -22,6 +22,7 @@
 	require 'sets.php';
 	require 'es-widgets.php';
 	require 'searchbox.php';
+	require 'es-short-codes.php';
 	
 	/** Hooks go here*/
 	/** Hook for options page.*/
@@ -33,6 +34,8 @@
 	add_shortcode('es_card_page', 'es_card_page');
 	add_shortcode('es_sets_page', 'es_sets_page');
 	add_shortcode('es_search_box', 'es_search_box');
+	add_shortcode('es_shortcode_card_image', 'es_shortcode_card_image');
+	add_shortcode('es_shortcode_card_name', 'es_shortcode_card_name');
 	
 	/** Link for options page.*/
 	function es_plugin_menu() {
