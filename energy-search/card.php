@@ -203,11 +203,12 @@
 					echo $card['attacks'][$x]['text'];
 					echo '<br>' . '<br>';
 				} 
-				//print_r ($card['text']);
-				if ($card['text']){
-					echo $card['text'][0];
+				
+				for ($x = 0; $x < count($card['text']); $x++) {			
+					echo $card['text'][$x];
 					echo '<br>' . '<br>';
 				}
+				
 				echo '</td></tr>';
 				
 				echo '</tbody></table>';
@@ -220,8 +221,8 @@
 			}else{
 			
 			echo "No card specified!";
-			
+		
 		}
 		
-	}
-?>
+		}
+		?>		

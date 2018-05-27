@@ -20,7 +20,7 @@
 				//'attackName' => (isset($_GET['cardtext']) ? sanitize_text_field($_GET['cardtext']) : ''),
 				//'abilityName' => (isset($_GET['cardtext']) ? sanitize_text_field($_GET['cardtext']) : ''),
 				//'abilityText' => (isset($_GET['cardtext']) ? sanitize_text_field($_GET['cardtext']) : ''),
-				'pageSize' => 100
+				'pageSize' => 1000
 				])->all();
 				
 				foreach ($response as $model) {
