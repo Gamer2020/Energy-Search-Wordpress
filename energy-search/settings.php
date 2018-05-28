@@ -42,7 +42,7 @@
 		echo '<tr valign="top"><th scope="row">Ebay AppID Key:</th>';
 		echo '<td>';
 		
-		echo '<input type="text" name="es_ebay_AppID_key" value="' . get_option('es_ebay_AppID_key') . '">';
+		echo '<input type="text" name="es_ebay_AppID_key" value="' . sanitize_text_field(get_option('es_ebay_AppID_key')) . '">';
 		
 		echo '</td>';
 		echo '</tr>';
