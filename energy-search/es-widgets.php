@@ -100,9 +100,7 @@
 			if ( ! empty( $title ) )
 			echo $args['before_title'] . $title . $args['after_title'];
 			
-			if(isset($_GET['ID'])){						
-				
-				// This is where you run the code and display the output
+			if(isset($_GET['ID'])){
 				
 				$options = ['verify' => true];
 				$response = Pokemon::Card($options)->find(sanitize_text_field($_GET['ID']));
@@ -112,7 +110,7 @@
 				
 				// API request variables
 				
-				$endpoint = 'https://svcs.ebay.com/services/search/FindingService/v1';  // URL to call
+				$endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1';  // URL to call
 				
 				$version = '1.0.0';  // API version supported by your application
 				
@@ -150,7 +148,7 @@
 				
 				//$resp = simplexml_load_file($apicall);			
 				
-				$xml_file_content = file_get_contents($apicall);
+				$xml_file_content = wp_remote_fopen($apicall);
 				
 				/* Parse XML */
 				
@@ -160,8 +158,6 @@
 					
 					$ebayresults = '';
 					
-					
-					
 					// If the response was loaded, parse it and build links
 					
 					foreach($resp->searchResult->item as $item) {
@@ -170,13 +166,9 @@
 						
 						$link  = $item->viewItemURL;
 						
-						$title = $item->title;
-						
-						
+						$title = $item->title;			
 						
 						$price = $item->sellingStatus->currentPrice;
-						
-						
 						
 						// For each SearchResultItem node, build a link and append it to $results
 						
@@ -196,7 +188,7 @@
 					$ebayresults .= "Please refresh the page and try again.";
 					
 				}
-				
+				echo '<img src="' . plugin_dir_url( __FILE__ ). 'img/' . 'RightNow.gif" alt="Ebay:" height="35" width="85"><br>';		
 				echo $ebayresults;
 				
 			}
@@ -215,17 +207,17 @@
 			// Widget admin form
 		?>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
-		<?php 
-		}
-		
-		// Updating widget replacing old instances with new
-		public function update( $new_instance, $old_instance ) {
-			$instance = array();
-			$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-			return $instance;
-		}
+	<?php 
+	}
+	
+	// Updating widget replacing old instances with new
+	public function update( $new_instance, $old_instance ) {
+	$instance = array();
+	$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+	return $instance;
+	}
 	} // Class es_ebay_widget ends here
 ?>
