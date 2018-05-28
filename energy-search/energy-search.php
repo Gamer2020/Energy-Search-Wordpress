@@ -29,6 +29,10 @@
 	/** Hook for options page.*/
 	add_action( 'admin_menu', 'es_plugin_menu' );
 	add_action( 'admin_init', 'es_options_init' );
+	/** Other hooks */
+	add_filter( 'pre_get_document_title', 'es_handle_document_title', 10 );
+	add_filter( 'wpseo_title', 'es_handle_document_title', 15 );
+	add_filter( 'the_title', 'es_handle_post_title' );
 	
 	/** Shortcodes!*/
 	add_shortcode('es_search_page', 'es_search_page');
@@ -51,6 +55,67 @@
 	function es_options_validate( $input ) {
 		// do some validation here if necessary
 		return $input;
+	}
+	
+	function es_handle_document_title($title) {
+		$es_cardpage_options = get_option( 'es_cardpage_options' );
+		
+		$newtittle = "";
+		
+		if (get_the_ID() == $es_cardpage_options['page_id']){
+			
+			if(isset($_GET['ID'])){
+				
+				$options = ['verify' => true];
+				$response = Pokemon::Card($options)->find(sanitize_text_field($_GET['ID']));
+				$card = $response->toArray();
+				
+				$newtittle =  $card['name'] . ' | ' . get_bloginfo('name');
+				
+			}
+			
+		}
+		else
+		{
+			$newtittle = $title;
+		}
+		
+		
+		return $newtittle;  
+	}
+	
+	function es_handle_post_title($title) {
+		$es_cardpage_options = get_option( 'es_cardpage_options' );
+		$es_searchpage_options = get_option( 'es_searchpage_options' );
+		
+		$newtittle = "";
+		
+		if (is_page() && in_the_loop() && (get_the_ID() == $es_cardpage_options['page_id'])){
+			
+			$newtittle =  "";
+			
+			/* 			if(isset($_GET['ID'])){
+				
+				$options = ['verify' => true];
+				$response = Pokemon::Card($options)->find(sanitize_text_field($_GET['ID']));
+				$card = $response->toArray();
+				
+				$newtittle =  $card['name'];
+				
+			} */
+		}
+		elseif (is_page() && in_the_loop() && (get_the_ID() == $es_searchpage_options['page_id'])){
+			
+			$newtittle =  "";
+			
+		}
+		else
+		{
+			$newtittle = $title;
+		}
+		
+		
+		return $newtittle;  
 	}
 	
 ?>

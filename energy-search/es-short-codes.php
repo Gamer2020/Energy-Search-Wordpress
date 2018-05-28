@@ -30,6 +30,7 @@
 			
 			$ReturnCode = $ReturnCode . '</style>';
 			
+			$ReturnCode = $ReturnCode . "<div class='hover_img'><a href='" . get_permalink($es_cardpage_options['page_id']) . "?ID=" . $card['id'] . "'>" . $card['name'] . '<span><img width="250" height="350" src=' . $card['imageUrl'] . "" . " alt=" . '"' . $card['name'] . '"' . "></span>" . "</a></div>";
 			
 			return $ReturnCode;
 			
