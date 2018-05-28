@@ -9,7 +9,7 @@
 			$card = $response->toArray();
 			
 			return "<a href='" . get_permalink($es_cardpage_options['page_id']) . "?ID=" . $card['id'] . "'>" . '<img width="250" height="350" src=' . $card['imageUrl'] . "" . " alt=" . '"' . $card['name'] . '"' . ">" . "</a>";
-
+			
 		}	
 	}
 	
@@ -20,8 +20,19 @@
 			$response = Pokemon::Card($options)->find(sanitize_text_field($content));
 			$card = $response->toArray();
 			
-			return "<a href='" . get_permalink($es_cardpage_options['page_id']) . "?ID=" . $card['id'] . "'>" . $card['name'] . "</a>";
-
+			$ReturnCode = '<style type="text/css">';
+			
+			$ReturnCode = $ReturnCode . '.hover_img a { position:relative; }';
+			
+			$ReturnCode = $ReturnCode . '.hover_img a span { position:absolute; display:none; z-index:99; }';
+			
+			$ReturnCode = $ReturnCode . '.hover_img a:hover span { display:block; }';
+			
+			$ReturnCode = $ReturnCode . '</style>';
+			
+			
+			return $ReturnCode;
+			
 		}
 	}
 	
