@@ -100,10 +100,106 @@
 			if ( ! empty( $title ) )
 			echo $args['before_title'] . $title . $args['after_title'];
 			
-			// This is where you run the code and display the output
-			$es_ebay_AppID_key = get_option( 'es_ebay_AppID_key' );
-			
-			echo $es_ebay_AppID_key;
+			if(isset($_GET['ID'])){						
+				
+				// This is where you run the code and display the output
+				
+				$options = ['verify' => true];
+				$response = Pokemon::Card($options)->find(sanitize_text_field($_GET['ID']));
+				$card = $response->toArray();
+				
+				$es_ebay_AppID_key = get_option( 'es_ebay_AppID_key' );
+				
+				// API request variables
+				
+				$endpoint = 'https://svcs.ebay.com/services/search/FindingService/v1';  // URL to call
+				
+				$version = '1.0.0';  // API version supported by your application
+				
+				$appid = $es_ebay_AppID_key;  // Replace with your own AppID
+				
+				$globalid = 'EBAY-US';  // Global ID of the eBay site you want to search (e.g., EBAY-DE)
+				
+				$query = "Pokemon " . $card['name'] . " " . $card['set'] . " " . $card['number']; // You may want to supply your own query
+				
+				$safequery = urlencode($query);  // Make the query URL-friendly
+				
+				// Construct the findItemsByKeywords HTTP GET call
+				
+				$apicall = "$endpoint?";
+				
+				$apicall .= "OPERATION-NAME=findItemsByKeywords";
+				
+				$apicall .= "&SERVICE-VERSION=$version";
+				
+				$apicall .= "&SECURITY-APPNAME=$appid";
+				
+				$apicall .= "&GLOBAL-ID=$globalid";
+				
+				$apicall .= "&keywords=$safequery";
+				
+				$apicall .= "&paginationInput.entriesPerPage=1";
+				
+				$apicall .= "&itemFilter(1).name=ListingType&itemFilter(1).value(0)=FixedPrice"; //I don't want auctions
+				
+				$apicall .= "&itemFilter(1).value(1)=FixedPrice"; //These have Buy it Now so include them
+				
+				$apicall .= "&sortOrder=PricePlusShippingLowest"; //I want to see the best deals
+				
+				// Load the call and capture the document returned by eBay API
+				
+				//$resp = simplexml_load_file($apicall);			
+				
+				$xml_file_content = file_get_contents($apicall);
+				
+				/* Parse XML */
+				
+				$resp = new SimpleXMLElement($xml_file_content);
+				
+				if ($resp->ack == "Success") {
+					
+					$ebayresults = '';
+					
+					
+					
+					// If the response was loaded, parse it and build links
+					
+					foreach($resp->searchResult->item as $item) {
+						
+						$pic   = $item->galleryURL;
+						
+						$link  = $item->viewItemURL;
+						
+						$title = $item->title;
+						
+						
+						
+						$price = $item->sellingStatus->currentPrice;
+						
+						
+						
+						// For each SearchResultItem node, build a link and append it to $results
+						
+						$ebayresults .= "<tr><td><a href=\"$link\"><img src=\"$pic\"></a></td><br><td><a href=\"$link\">Price: $price</a></td></tr>";
+						
+						$datareturnedcheck = 1;
+						
+					}					
+				}
+				
+				// If the response does not indicate 'Success,' print an error
+				
+				else {
+					
+					$ebayresults  = "Ebay data unobtained. ";
+					
+					$ebayresults .= "Please refresh the page and try again.";
+					
+				}
+				
+				echo $ebayresults;
+				
+			}
 			
 			echo $args['after_widget'];
 		}
@@ -119,8 +215,8 @@
 			// Widget admin form
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
-			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
 		<?php 
 		}
