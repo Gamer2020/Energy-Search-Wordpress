@@ -21,8 +21,9 @@
 	require 'search.php';
 	require 'sets.php';
 	require 'es-widgets.php';
-	require 'searchbox.php';
+	require 'es-searchbox.php';
 	require 'es-short-codes.php';
+	require 'es-text-editor-buttons.php';
 	
 	/** Hooks go here*/
 	/** Hook for options page.*/
