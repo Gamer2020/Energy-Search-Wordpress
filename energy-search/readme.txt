@@ -40,6 +40,12 @@ This section describes how to install the plugin and get it working.
 
 [es_search_box] - Code for the search box.
 
+== Recommendations ==
+
+The plugin works best with a template that supports full width pages; this is mainly for the search results page.
+
+It's also recommended to use a plugin like https://wordpress.org/plugins/per-page-sidebars/ to have different side bars for different pages.
+
 == Frequently Asked Questions ==
 
 = Where is the data obtained from? =

@@ -50,10 +50,12 @@
 	function es_options_init(){
 		register_setting('es_options_group','es_cardpage_options','es_options_validate');
 		register_setting('es_options_group','es_searchpage_options','es_options_validate');
+		register_setting('es_options_group','es_ebay_AppID_key','es_options_validate');
 	}
 	
 	function es_options_validate( $input ) {
 		// do some validation here if necessary
+		//return sanitize_text_field($input);
 		return $input;
 	}
 	

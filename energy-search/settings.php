@@ -9,6 +9,7 @@
 		settings_fields( 'es_options_group' );
 		$es_cardpage_options = get_option( 'es_cardpage_options' );
 		$es_searchpage_options = get_option( 'es_searchpage_options' );
+		$es_ebay_AppID_key = get_option( 'es_ebay_AppID_key' );
 		
 		echo '<h2>Selected Pages</h2>';
 		
@@ -35,6 +36,14 @@
 			}
 		}
 		echo '</select>';
+		echo '</td>';
+		echo '</tr>';
+		
+		echo '<tr valign="top"><th scope="row">Ebay AppID Key:</th>';
+		echo '<td>';
+		
+		echo '<input type="text" name="es_ebay_AppID_key" value="' . get_option('es_ebay_AppID_key') . '">';
+		
 		echo '</td>';
 		echo '</tr>';
 		
