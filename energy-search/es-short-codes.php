@@ -22,15 +22,41 @@
 			
 			$ReturnCode = '<style type="text/css">';
 			
-			$ReturnCode = $ReturnCode . '.hover_img a { position:relative; }';
+			$ReturnCode = $ReturnCode . '.hiddenimg {
+			display: none;
+			position:absolute;
+			z-index:99; 
+			}
 			
-			$ReturnCode = $ReturnCode . '.hover_img a span { position:absolute; display:none; z-index:99; }';
+			.hiddentxt {
+			font-weight: bold;
+			}
 			
-			$ReturnCode = $ReturnCode . '.hover_img a:hover span { display:block; }';
+			.hiddentxt a {
+			text-decoration: none;
+			}
+			
+			.hiddenclick {
+			font-weight: bold;
+			text-decoration: none;
+			cursor: pointer;
+			}
+			
+			.hiddenclick a {
+			text-decoration: none;
+			}
+			
+			.hiddenclick a:visited {
+			text-decoration: none;
+			}
+			
+			.hiddentxt:hover ~ .hiddenimg {
+			display: block;
+			}';
 			
 			$ReturnCode = $ReturnCode . '</style>';
 			
-			$ReturnCode = $ReturnCode . "<div class='hover_img'><a href='" . get_permalink($es_cardpage_options['page_id']) . "?ID=" . $card['id'] . "'>" . $card['name'] . '<span><img width="250" height="350" src=' . $card['imageUrl'] . "" . " alt=" . '"' . $card['name'] . '"' . "></span>" . "</a></div>";
+			$ReturnCode = $ReturnCode . '<span class="hiddentxt"><a href="' . get_permalink($es_cardpage_options['page_id']) . "?ID=" . $card['id'] . '">' . $card['name']  . '</a></span><span class="hiddenimg"><img src="' . $card['imageUrl'] . '" width="250" height="350" /></span>';
 			
 			return $ReturnCode;
 			
