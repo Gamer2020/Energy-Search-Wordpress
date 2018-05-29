@@ -10,6 +10,7 @@
 		$es_cardpage_options = get_option( 'es_cardpage_options' );
 		$es_searchpage_options = get_option( 'es_searchpage_options' );
 		$es_ebay_AppID_key = get_option( 'es_ebay_AppID_key' );
+		$es_tcgplayer_API_key = get_option( 'es_tcgplayer_API_key' );
 		
 		echo '<h2>Selected Pages</h2>';
 		
@@ -41,11 +42,15 @@
 		
 		echo '<tr valign="top"><th scope="row">Ebay AppID Key:</th>';
 		echo '<td>';
-		
 		echo '<input type="text" name="es_ebay_AppID_key" value="' . sanitize_text_field(get_option('es_ebay_AppID_key')) . '">';
-		
 		echo '</td>';
 		echo '</tr>';
+		
+		echo '<tr valign="top"><th scope="row">TCGplayer API Key:</th>';
+		echo '<td>';
+		echo '<input type="text" name="es_tcgplayer_API_key" value="' . sanitize_text_field(get_option('es_tcgplayer_API_key')) . '">';
+		echo '</td>';
+		echo '</tr>';	
 		
 		echo '</table>';
 		echo '<p class="submit">';

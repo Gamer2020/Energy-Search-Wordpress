@@ -5,6 +5,7 @@
 	function wpb_load_widget() {
 		register_widget( 'es_search_widget' );
 		register_widget( 'es_ebay_widget' );
+		register_widget( 'es_tcgplayer_widget' );
 	}
 	
 	add_action( 'widgets_init', 'wpb_load_widget' );
@@ -210,14 +211,124 @@
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
-	<?php 
-	}
-	
-	// Updating widget replacing old instances with new
-	public function update( $new_instance, $old_instance ) {
-	$instance = array();
-	$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-	return $instance;
-	}
+		<?php 
+		}
+		
+		// Updating widget replacing old instances with new
+		public function update( $new_instance, $old_instance ) {
+			$instance = array();
+			$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+			return $instance;
+		}
 	} // Class es_ebay_widget ends here
+	
+	class es_tcgplayer_widget extends WP_Widget {
+		
+		function __construct() {
+			parent::__construct(
+			
+			// Base ID of your widget
+			'es_tcgplayer_widget', 
+			
+			// Widget name will appear in UI
+			__('Energy Search - Card TCGPlayer Price', 'wpb_widget_domain'), 
+			
+			// Widget description
+			array( 'description' => __( 'This widget displays the TCGPlayer prices for a card. Only works on the card page.', 'wpb_widget_domain' ), ) 
+			);
+		}
+		
+		// Creating widget front-end
+		
+		public function widget( $args, $instance ) {
+			$title = apply_filters( 'widget_title', $instance['title'] );
+			
+			// before and after widget arguments are defined by themes
+			echo $args['before_widget'];
+			if ( ! empty( $title ) )
+			echo $args['before_title'] . $title . $args['after_title'];
+			
+			if(isset($_GET['ID'])){
+				
+				$options = ['verify' => true];
+				$response = Pokemon::Card($options)->find(sanitize_text_field($_GET['ID']));
+				$card = $response->toArray();
+				
+				$es_tcgplayer_API_key = get_option( 'es_tcgplayer_API_key' );
+				
+				$query = "http://partner.tcgplayer.com/x3/pkphl.asmx/p?pk=" . $es_tcgplayer_API_key . "&s=" . $card['set'] . "&p=" . $card['name'];
+				
+				$xml_file_content = wp_remote_fopen(str_replace(" ","%20",$query));
+				
+				$parsed_xml = new SimpleXMLElement($xml_file_content);
+				
+				if($xml_file_content)
+				
+				{
+					
+					$results  = 
+					
+					'<style>
+					
+					.tab {border: none;}
+					
+					.tab .first {border: none;}
+					
+					</style>
+					
+					<table class="tab"><tr><td class="first">Low</td><td class="first">Avg</td><td class="first">High</td></tr>
+					
+					<tr>
+					
+					<td class="first"><a href="' . $parsed_xml->product->link . '" >' . $parsed_xml->product->lowprice . '</a></td>
+					
+					<td class="first"><a href="' . $parsed_xml->product->link . '" >' . $parsed_xml->product->avgprice . '</a></td>
+					
+					<td class="first"><a href="' . $parsed_xml->product->link . '" >' . $parsed_xml->product->hiprice . '</a></td>
+					
+					</tr>
+					
+					</table>';
+						
+				}
+				
+				else
+				
+				{
+					
+					$results  = "Could not find the price data! This is being worked on!";
+					
+				}
+				
+				echo '<img src="' . plugin_dir_url( __FILE__ ). 'img/' . 'tcgPlayerLogo.png" alt="TCGPlayer:" height="50" width="120"><br>';		
+				echo $results;
+			}
+			
+			echo $args['after_widget'];
+		}
+		
+		// Widget Backend 
+		public function form( $instance ) {
+			if ( isset( $instance[ 'title' ] ) ) {
+				$title = $instance[ 'title' ];
+			}
+			else {
+				$title = __( 'TCGPlayer Price', 'wpb_widget_domain' );
+			}
+			// Widget admin form
+		?>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+		</p>
+		<?php 
+		}
+		
+		// Updating widget replacing old instances with new
+		public function update( $new_instance, $old_instance ) {
+			$instance = array();
+			$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+			return $instance;
+		}
+	} // Class es_tcgplayer_widget ends here
 ?>
