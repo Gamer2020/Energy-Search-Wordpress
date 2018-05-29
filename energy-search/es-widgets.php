@@ -256,7 +256,7 @@
 				
 				$es_tcgplayer_API_key = get_option( 'es_tcgplayer_API_key' );
 				
-				$query = "http://partner.tcgplayer.com/x3/pkphl.asmx/p?pk=" . $es_tcgplayer_API_key . "&s=" . $card['set'] . "&p=" . $card['name'];
+				$query = "http://partner.tcgplayer.com/x3/pkphl.asmx/p?pk=" . $es_tcgplayer_API_key . "&s=" . NameToTCGPName($card['set']) . "&p=" . $card['name'];
 				
 				$xml_file_content = wp_remote_fopen(str_replace(" ","%20",$query));
 				
