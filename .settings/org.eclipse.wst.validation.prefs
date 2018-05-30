@@ -1,0 +1,10 @@
+DELEGATES_PREFERENCE=delegateValidatorList
+USER_BUILD_PREFERENCE=enabledBuildValidatorList
+USER_MANUAL_PREFERENCE=enabledManualValidatorList
+USER_PREFERENCE=overrideGlobalPreferencestruedisableAllValidationfalseversion1.2.701.v201707142105
+eclipse.preferences.version=1
+override=true
+suspend=false
+vals/org.eclipse.php.ui.HTMLValidatorForPHP/global=TT01
+vals/org.eclipse.php.ui.HTMLValidatorForPHP/groups=0107include01111contentType130org.eclipse.php.core.phpsourceT0107exclude0104file122energy-search/vendor/*F02
+vf.version=3
