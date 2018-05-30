@@ -52,7 +52,7 @@
 			
 			.hiddentxt' . $card['id'] .':hover ~ .hiddenimg' . $card['id'] .' {
 			display: inline;
-position:absolute;
+			position:absolute;
 			}';
 			
 			$ReturnCode = $ReturnCode . '</style>';

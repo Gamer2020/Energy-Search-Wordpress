@@ -15,11 +15,11 @@
 	use Pokemon\Pokemon;
 	require __DIR__ . '/vendor/autoload.php';
 	
-	require 'poketcgfunctions.php';
-	require 'settings.php';
-	require 'card.php';
-	require 'search.php';
-	require 'sets.php';
+	require 'es-poketcgfunctions.php';
+	require 'es-settings.php';
+	require 'es-card.php';
+	require 'es-search.php';
+	require 'es-sets.php';
 	require 'es-widgets.php';
 	require 'es-searchbox.php';
 	require 'es-short-codes.php';
