@@ -4,7 +4,7 @@ Donate link: https://gamer2020.net/?page_id=335
 Tags: Pokemon, TCG, Gamer2020
 Requires at least: 4.9
 Tested up to: 4.9
-Stable tag: 0.2
+Stable tag: 0.3
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -15,7 +15,7 @@ A Pokemon TCG plugin for Wordpress!
 
 A Pokemon TCG plugin for Wordpress made with the Pokemon TCG API host on [https://pokemontcg.io/](https://pokemontcg.io/)
 
-Using this plugin you can add a card database to your website. Many more features to be added in the future!
+Using this plugin you can add a card database to your Wordpress website. Many more features to be added in the future!
 
 == Demo ==
 
@@ -30,7 +30,7 @@ This section describes how to install the plugin and get it working.
 3. Use Settings->Energy Search screen to configure the plugin. Make sure to set what pages to use for card and search.
 4. Add the short codes that you wish to use to your desired pages.
 
-== Shortcodes ==
+== Page Shortcodes ==
 
 [es_search_page] - Code for the search results page.
 
@@ -39,6 +39,12 @@ This section describes how to install the plugin and get it working.
 [es_sets_page] - Code for the page that displays all the sets.
 
 [es_search_box] - Code for the search box.
+
+== Post Shortcodes ==
+
+[es_shortcode_card_name]xy4-118[/es_shortcode_card_name] - Displays the card name with link to card. Hovering shows the card's image.
+
+[es_shortcode_card_image]bw5-107[/es_shortcode_card_image] - Shows card image with link.
 
 == Recommendations ==
 
@@ -65,6 +71,13 @@ The demo site is currently the testing ground for developing the plugin. Some st
 1. None Yet.
 
 == Changelog ==
+
+= 0.3 =
+*Added post short codes.
+*Added shortcode buttons in editor.
+*Added actual page names when view card pages.
+*Added Ebay and TCG player price Widgets.
+*Added previous and next card on card page.
 
 = 0.2 =
 * Added search Box.

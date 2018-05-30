@@ -3,7 +3,7 @@
 		Plugin Name:  Energy Search
 		Plugin URI:	https://www.EnergySearch.Gamer2020.net
 		Description:  A Pokemon TCG plugin for Wordpress made with the Pokemon TCG API!
-		Version:      0.2
+		Version:      0.3
 		Author:       Gamer2020
 		Author URI:   https://www.Gamer2020.net
 		License:      GPL2
