@@ -22,41 +22,42 @@
 			
 			$ReturnCode = '<style type="text/css">';
 			
-			$ReturnCode = $ReturnCode . '.hiddenimg {
+			$ReturnCode = $ReturnCode . '.hiddenimg' . $card['id'] .' {
 			display: none;
 			position:absolute;
 			z-index:99; 
 			}
 			
-			.hiddentxt {
+			.hiddentxt' . $card['id'] .' {
 			font-weight: bold;
 			}
 			
-			.hiddentxt a {
+			.hiddentxt' . $card['id'] .' a {
 			text-decoration: none;
 			}
 			
-			.hiddenclick {
+			.hiddenclick' . $card['id'] .' {
 			font-weight: bold;
 			text-decoration: none;
 			cursor: pointer;
 			}
 			
-			.hiddenclick a {
+			.hiddenclick' . $card['id'] .' a {
 			text-decoration: none;
 			}
 			
-			.hiddenclick a:visited {
+			.hiddenclick' . $card['id'] .' a:visited {
 			text-decoration: none;
 			}
 			
-			.hiddentxt:hover ~ .hiddenimg {
-			display: block;
+			.hiddentxt' . $card['id'] .':hover ~ .hiddenimg' . $card['id'] .' {
+			display: inline;
+position:absolute;
 			}';
 			
 			$ReturnCode = $ReturnCode . '</style>';
 			
-			$ReturnCode = $ReturnCode . '<span class="hiddentxt"><a href="' . get_permalink($es_cardpage_options['page_id']) . "?ID=" . $card['id'] . '">' . $card['name']  . '</a></span><span class="hiddenimg"><img src="' . $card['imageUrl'] . '" width="250" height="350" /></span>';
+			$ReturnCode = $ReturnCode . '<span class="hiddentxt' . $card['id'] .'"><a href="' . get_permalink($es_cardpage_options['page_id']) . "?ID=" . $card['id'] . '">' . $card['name']  . '</a></span><span class="hiddenimg' . $card['id'] .'"><img src="' . $card['imageUrl'] . '" width="250" height="350" /></span>';
 			
 			return $ReturnCode;
 			
