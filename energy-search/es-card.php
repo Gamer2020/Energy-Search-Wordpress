@@ -6,6 +6,9 @@
 		if(isset($_GET['ID'])){
 			
 			try {
+			    
+			    $es_cardpage_options = get_option( 'es_cardpage_options' );
+			    
 				$options = ['verify' => true];
 				$response = Pokemon::Card($options)->find(sanitize_text_field($_GET['ID']));
 				$card = $response->toArray();
@@ -212,6 +215,42 @@
 				echo '</td></tr>';
 				
 				echo '</tbody></table>';
+				
+				$cardPrev = "";
+				$cardNext = "";
+				
+				$response = Pokemon::Card($options)->where([
+				    'setCode' => $card['setCode'],
+				    'number' => ($card['number'] - 1)
+				])->all();
+				foreach ($response as $model) {
+				    $cardPrev = $model->toArray();
+				}
+				
+				$response = Pokemon::Card($options)->where([
+				    'setCode' => $card['setCode'],
+				    'number' => ($card['number'] + 1)
+				])->all();
+				foreach ($response as $model) {
+				    $cardNext = $model->toArray();
+				}
+				
+				echo '<table>';
+				echo '<tr>';
+				
+				if (!empty($cardPrev)){echo '<th>Previous card in set</th>';}
+				
+				if (!empty($cardNext)){echo '<th>Next card in set</th>';}
+				
+				echo '</tr>';
+				echo '<tr>';
+				
+				if (!empty($cardPrev)){echo "<td>" . '<div style="text-align:center"><a href="' . get_permalink($es_cardpage_options['page_id']) . "?ID=" . $cardPrev['id'] . '">' . '<img width="250" height="350" src=' . $cardPrev['imageUrl'] . "" . ">" . "</a></div>" . "</td>";}
+				
+				if (!empty($cardNext)){echo "<td>" . '<div style="text-align:center"><a href="' . get_permalink($es_cardpage_options['page_id']) . "?ID=" . $cardNext['id'] . '">' . '<img width="250" height="350" src=' . $cardNext['imageUrl'] . "" . ">" . "</a></div>" . "</td>";}
+				
+				echo '</tr>';
+				echo '</table>'; 
 				
 				//catch exception
 				}catch(Exception $e) {
